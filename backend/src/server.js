@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const { connection } = require('./config/db');
 const { doctorRouter } = require('../routes/doctors.routes');
+const { appointmentRouter } = require('../routes/appointment.routes');
 require('dotenv').config();
 const port = process.env.PORT 
 const app = express();
@@ -9,6 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/', doctorRouter)
+app.use('/', appointmentRouter)
 
 app.get('/test', (req, res) => {
     res.send({

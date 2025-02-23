@@ -44,7 +44,7 @@ doctorRouter.post('/doctors', async(req, res) => {
         let doctor = new Doctor({...value})
         await doctor.save()
         res.send({
-            message: 'doctor created successfully'
+            message: 'Doctor created successfully'
         })
     } catch(err) {
          res.send({
