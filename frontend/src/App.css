@@ -1,0 +1,68 @@
+.save-btn {
+    border: 1px solid white;
+    padding: 5px 10px;
+}
+
+.save-btn:hover {
+    border: 1px solid rgb(47, 108, 252);
+    background-color: rgb(47, 108, 252);
+}
+
+.show-absolute-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1;
+}
+
+.back-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 1;
+}
+
+.book-btn {
+    border: 1px solid white;
+    padding: 5px 10px;
+}
+
+.book-btn:hover {
+    cursor: pointer;
+    border: 1px solid rgb(47, 108, 252);
+    background-color: rgb(47, 108, 252);
+}
+
+/* date-picker style  */
+/* Change background to white */
+.react-datepicker {
+    background-color: white !important;
+    color: red !important;
+    border: 1px solid #ccc;
+}
+
+/* Change text color in the calendar */
+.react-datepicker__day,
+.react-datepicker__time-name {
+    color: white !important;
+}
+
+/* Change header color */
+.react-datepicker__current-month,
+.react-datepicker__day-name {
+    color: white !important;
+    font-weight: bolder;
+}
+
+/* Change selected day background */
+.react-datepicker__day--selected {
+    background-color: #007bff !important;
+    /* Blue color */
+    color: white !important;
+}
+
+/* Change hover effect */
+.react-datepicker__day:hover {
+    color: #007bff !important;
+    font-weight: bold;
+}
