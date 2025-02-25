@@ -3,6 +3,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { addDays } from "date-fns";
 import { useNavigate } from "react-router-dom"
+import PropTypes from 'prop-types';
 
 const Appointment = ({ data, closeModal }) => {
     const [id, setId] = useState(data._id)
@@ -10,6 +11,7 @@ const Appointment = ({ data, closeModal }) => {
     const [duration, setDuration] = useState();
     const [appointmentType, setAppointmentType] = useState('');
     const [patientName, setPatientName] = useState('');
+
     const [notes, setNotes] = useState('');
 
     const nav = useNavigate();
@@ -29,7 +31,7 @@ const Appointment = ({ data, closeModal }) => {
         </div>
       );
     }
-    
+
     const postAppointment = async () => {
       const data = {
         doctorId:id,
@@ -114,5 +116,10 @@ const Appointment = ({ data, closeModal }) => {
     </div>
   )
 }
+
+Appointment.propTypes = {//+
+  data: PropTypes.object.isRequired,//+
+  closeModal: PropTypes.func.isRequired,//+
+};//
 
 export default Appointment

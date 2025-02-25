@@ -19,7 +19,7 @@ const DoctorList = () => {
   }, []);
   console.log(doctors);
   return (
-    <div className='w-full flex items-center justify-center mt-5'>
+    <div className='w-full flex items-center justify-center mt-20'>
       <table className='table-auto border-collapse'>
         <thead>
           <tr>
