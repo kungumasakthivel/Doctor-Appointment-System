@@ -40,15 +40,17 @@ const columns = [
 
 export default function StickyHeadTable() {
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
   const [data, setData] = useState();
+  const [len, setLen] = useState(5);
 
   useEffect(() => {
     axios.get('https://doctor-appointment-system-awge.onrender.com/appointment').then((response) => {
         setData(response.data);
+        setLen(response.data.length);
     })
   }, []) 
-  console.log(data);
+
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -59,18 +61,6 @@ export default function StickyHeadTable() {
     setPage(0);
   };
 
-  let rows = []
-  useEffect(() => {
-    function addDataToRow() {
-        if(data) {
-            for (let i=0; i<data.length; i++) {
-                console.log(data[i])
-            }
-        }
-    }
-    addDataToRow()
-  }, [data])
-  console.log(rows)
 
   return (
     <Paper sx={{ width: '100%', overflow: 'hidden' }}>
@@ -100,7 +90,7 @@ export default function StickyHeadTable() {
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => {
                 return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
+                  <TableRow hover role="checkbox" tabIndex={-1} key={row._id}>
                     {columns.map((column) => {
                       const value = row[column.id];
                       return (
@@ -118,13 +108,14 @@ export default function StickyHeadTable() {
         </Table>
       </TableContainer>
       <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
+        rowsPerPageOptions={[5]}
         component="div"
-        count={rows.length}
-        rowsPerPage={rowsPerPage}
+        count={len}
+        rowsPerPage={rowsPerPage || 5}
         page={page}
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
+        sx={{ "& .MuiTablePagination-selectLabel, & .MuiTablePagination-select": { display: "none" } }}
       />
     </Paper>
   );
