@@ -26,7 +26,7 @@ const columns = [
   },
   {
     id: 'duration',
-    label: 'Duration',
+    label: 'Duration (minutes)',
     minWidth: 100,
     align: 'right'
   },
@@ -43,12 +43,15 @@ export default function StickyHeadTable() {
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [data, setData] = useState();
   const [len, setLen] = useState(5);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true)
     axios.get('https://doctor-appointment-system-awge.onrender.com/appointment').then((response) => {
         setData(response.data);
         setLen(response.data.length);
     })
+    setLoading(false)
   }, []) 
 
 
@@ -86,6 +89,7 @@ export default function StickyHeadTable() {
             </TableRow>
           </TableHead>
           <TableBody className='appointment-body'>
+            {loading?<p>Loading...</p>:null}
             {data?data
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => {
@@ -115,7 +119,12 @@ export default function StickyHeadTable() {
         page={page}
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
-        sx={{ "& .MuiTablePagination-selectLabel, & .MuiTablePagination-select": { display: "none" } }}
+        sx={{ 
+            "& .MuiTablePagination-selectLabel, & .MuiTablePagination-select": { display: "none" },
+            "svg": {
+                color: 'red'
+            } 
+        }}
       />
     </Paper>
   );

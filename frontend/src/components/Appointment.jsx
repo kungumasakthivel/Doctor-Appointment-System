@@ -83,7 +83,7 @@ const Appointment = ({ data, closeModal }) => {
           className="w-xs"
           type="text"
           value={duration}
-          placeholder="Duration in minutes (multiple of 30)"
+          placeholder="Duration in minutes (30 or 60)"
           onChange={(e) => setDuration(e.target.value)}
         />
         <input 

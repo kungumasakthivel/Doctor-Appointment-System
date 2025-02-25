@@ -12,7 +12,7 @@
     position: absolute;
     top: 20px;
     right: 20px;
-    z-index: 1;
+    z-index: -1;
 }
 
 .back-btn {
@@ -31,6 +31,13 @@
     cursor: pointer;
     border: 1px solid rgb(47, 108, 252);
     background-color: rgb(47, 108, 252);
+}
+
+.show-absolute-btn-appointment {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: -1;
 }
 
 /* date-picker style  */

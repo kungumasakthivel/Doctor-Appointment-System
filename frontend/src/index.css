@@ -7,6 +7,10 @@
     box-sizing: border-box;
 }
 
+p {
+    color: white !important;
+}
+
 input {
     border-color: white ;
     border-width: 1px;

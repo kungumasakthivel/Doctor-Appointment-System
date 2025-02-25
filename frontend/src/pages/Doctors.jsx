@@ -13,6 +13,12 @@ const Doctors = () => {
         >
           New Doctor
         </button>
+        <button 
+          className="rounded-2xl save-btn cursor-pointer show-absolute-btn-appointment" 
+          onClick={() => nav('/appointments')}
+        >
+          Appointments
+        </button>
     </div>
   )
 }

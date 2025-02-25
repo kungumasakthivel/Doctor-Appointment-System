@@ -7,15 +7,18 @@ Modal.setAppElement('body');
 const DoctorList = () => {
   const [doctors, setDoctors] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   function closeModal({val}) {
     setIsOpen(val);
   } 
 
   useEffect(() => {
+    setLoading(true)
     axios.get('https://doctor-appointment-system-awge.onrender.com/doctors').then((response) => {
       setDoctors(response.data);
     });
+    setLoading(false)
   }, []);
   console.log(doctors);
   return (
@@ -30,6 +33,7 @@ const DoctorList = () => {
           </tr>
         </thead>
         <tbody>
+          {loading?<p>Loading</p>:null}
           {doctors.map((doc) => (
             <tr key={doc._id}>
               <td className='border p-2'>{doc.name}</td>
